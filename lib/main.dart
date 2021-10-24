@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gelato_app_bloc/HomePageScreen/home_page.dart';
+
+import 'package:gelato_app_bloc/Screens/HomePageScreen/home_page.dart';
 
 void main() {
   Bloc.observer = BlocObserver();
