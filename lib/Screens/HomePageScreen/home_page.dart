@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gelato_app_bloc/BLoC/songs_bloc.dart';
-import 'package:gelato_app_bloc/Chopper/songs_model.dart';
+
 import 'package:gelato_app_bloc/Screens/HomePageScreen/home_app_bar.dart';
 import 'package:gelato_app_bloc/Screens/HomePageScreen/album_screen.dart';
 
@@ -13,27 +14,21 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
-  void initState() {
-    super.initState();
-    bloc.fetchAllSongs();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(70),
         child: HomeAppBar(),
       ),
-      body: StreamBuilder(
-        stream: bloc.allSongs,
-        builder: (context, AsyncSnapshot<SongsJson?> snapshot) {
-          if (snapshot.hasData && snapshot.data != null) {
-            return AlbumScreen(snapshot: snapshot.data!);
-          } else if (snapshot.hasError) {
-            return Text(snapshot.error.toString());
+      body: BlocBuilder<SongsBloc, SongsState>(
+        builder: (context, state) {
+          if (state is SongsLoaded) {
+            return AlbumScreen(snapshot: state.songs);
           }
-          return const Center(child: CircularProgressIndicator());
+          if (state is SongsLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          return const Center(child: Text('Something went wrong'));
         },
       ),
     );
