@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const String _homePage = 'Home Page';
+const String _kHomePage = 'Home Page';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({Key? key}) : super(key: key);
@@ -12,12 +12,14 @@ class HomeAppBar extends StatelessWidget {
       elevation: 0,
       title: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 10,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text(
-                _homePage,
+                _kHomePage,
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.white,

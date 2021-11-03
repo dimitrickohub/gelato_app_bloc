@@ -5,13 +5,13 @@ abstract class SongsState extends Equatable {
   const SongsState();
 }
 
-class SongsLoading extends SongsState {
+class LoadingSongsState extends SongsState {
   @override
   List<SongsJson> get props => [];
 }
 
-class SongsLoaded extends SongsState {
-  const SongsLoaded({required this.songs});
+class LoadedSongsState extends SongsState {
+  const LoadedSongsState({required this.songs});
 
   final SongsJson songs;
 
@@ -19,7 +19,7 @@ class SongsLoaded extends SongsState {
   List<Object> get props => [songs];
 }
 
-class SongsError extends SongsState {
+class ErrorSongsState extends SongsState {
   @override
   List<Object> get props => [];
 }

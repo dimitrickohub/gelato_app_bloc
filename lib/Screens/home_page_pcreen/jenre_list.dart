@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class JenreList extends StatefulWidget {
-  const JenreList({Key? key, required this.songType}) : super(key: key);
-  final List? songType;
+  const JenreList({required this.songType, Key? key}) : super(key: key);
+  final List<String> songType;
   @override
   State<JenreList> createState() => _JenreListState();
 }
@@ -21,7 +21,7 @@ class _JenreListState extends State<JenreList> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: List.generate(
-            widget.songType!.length,
+            widget.songType.length,
             (index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(
@@ -39,7 +39,7 @@ class _JenreListState extends State<JenreList> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        widget.songType![index],
+                        widget.songType[index],
                         style: TextStyle(
                             fontSize: 15,
                             color: activeMenu == index

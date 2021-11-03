@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gelato_app_bloc/BLoC/songs_bloc.dart';
+import 'package:gelato_app_bloc/screens/home_page_pcreen/album_screen.dart';
+import 'package:gelato_app_bloc/screens/home_page_pcreen/home_app_bar.dart';
 
-import 'package:gelato_app_bloc/Screens/HomePageScreen/home_app_bar.dart';
-import 'package:gelato_app_bloc/Screens/HomePageScreen/album_screen.dart';
-
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,10 +16,10 @@ class _HomePageState extends State<HomePage> {
       ),
       body: BlocBuilder<SongsBloc, SongsState>(
         builder: (context, state) {
-          if (state is SongsLoaded) {
+          if (state is LoadedSongsState) {
             return AlbumScreen(snapshot: state.songs);
           }
-          if (state is SongsLoading) {
+          if (state is LoadingSongsState) {
             return const Center(child: CircularProgressIndicator());
           }
           return const Center(child: Text('Something went wrong'));
