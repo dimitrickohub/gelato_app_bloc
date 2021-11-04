@@ -5,7 +5,7 @@ abstract class SongsEvent extends Equatable {
   const SongsEvent();
 }
 
-class SongsStarted extends SongsEvent {
+class InitializedSongsEvent extends SongsEvent {
   @override
   List<SongsJson> get props => [];
 }

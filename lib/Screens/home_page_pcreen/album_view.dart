@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class Album extends StatelessWidget {
+  final String img;
+  final String title;
+  final String description;
   const Album(
-      {Key? key,
-      required this.img,
+      {required this.img,
       required this.title,
-      required this.description})
+      required this.description,
+      Key? key})
       : super(key: key);
-  final String? img;
-  final String? title;
-  final String? description;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class Album extends StatelessWidget {
             height: 180,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage(img.toString()),
+                image: NetworkImage(img),
                 fit: BoxFit.cover,
               ),
               color: Colors.blueAccent,
@@ -32,11 +32,13 @@ class Album extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Text(title.toString(),
-              style: const TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-              )),
+          Text(
+            title.toString(),
+            style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
           const SizedBox(
             height: 5,
           ),

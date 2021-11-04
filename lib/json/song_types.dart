@@ -1,5 +1,5 @@
 // ignore: constant_identifier_names
-const List song_type_1 = [
+const List<String> song_type_1 = [
   "Hip-hop",
   "Rock",
   "Rap",
@@ -8,7 +8,7 @@ const List song_type_1 = [
   "R&B",
 ];
 // ignore: constant_identifier_names
-const List song_type_2 = [
+const List<String> song_type_2 = [
   "Podcasts",
   "Made For You",
   "Charts",

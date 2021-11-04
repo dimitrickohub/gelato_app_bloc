@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gelato_app_bloc/Chopper/songs_model.dart';
-import 'package:gelato_app_bloc/Screens/HomePageScreen/album_view.dart';
 
 import 'package:gelato_app_bloc/json/song_types.dart';
+import 'package:gelato_app_bloc/screens/home_page_pcreen/album_view.dart';
 
 import 'jenre_list.dart';
 
 class AlbumScreen extends StatefulWidget {
-  const AlbumScreen({Key? key, required this.snapshot}) : super(key: key);
-
   final SongsJson snapshot;
+  const AlbumScreen({required this.snapshot, Key? key}) : super(key: key);
 
   @override
   _AlbumScreenState createState() => _AlbumScreenState();
@@ -58,12 +57,12 @@ class _AlbumScreenState extends State<AlbumScreen> {
                           ),
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
-                          itemCount: widget.snapshot.result!.length - 5,
+                          itemCount: resultSongs.length - 5,
                           itemBuilder: (context, index) => Album(
-                              img: widget.snapshot.result![index].img!,
-                              title: widget.snapshot.result![index].title!,
+                              img: resultSongs[index].img.toString(),
+                              title: resultSongs[index].title.toString(),
                               description:
-                                  widget.snapshot.result![index].description!),
+                                  resultSongs[index].description.toString()),
                         ),
                       ),
                     ],
@@ -100,12 +99,13 @@ class _AlbumScreenState extends State<AlbumScreen> {
                           ),
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
-                          itemCount: widget.snapshot.result!.length - 5,
+                          itemCount: resultSongs.length - 5,
                           itemBuilder: (context, index) => Album(
-                              img: widget.snapshot.result![index + 5].img!,
-                              title: widget.snapshot.result![index + 5].title!,
-                              description: widget
-                                  .snapshot.result![index + 5].description!),
+                            img: resultSongs[index + 5].img.toString(),
+                            title: resultSongs[index + 5].title.toString(),
+                            description:
+                                resultSongs[index + 5].description.toString(),
+                          ),
                         ),
                       ),
                     ],
